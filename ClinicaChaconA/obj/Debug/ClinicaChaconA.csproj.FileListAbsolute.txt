@@ -1,0 +1,4 @@
+D:\Sistema Adminitrador de Citas Clinica Gabriela Chacón A\ClinicaChaconA\ClinicaChaconA\bin\ClinicaChaconA.dll
+D:\Sistema Adminitrador de Citas Clinica Gabriela Chacón A\ClinicaChaconA\ClinicaChaconA\bin\ClinicaChaconA.pdb
+D:\Sistema Adminitrador de Citas Clinica Gabriela Chacón A\ClinicaChaconA\ClinicaChaconA\obj\Debug\ClinicaChaconA.dll
+D:\Sistema Adminitrador de Citas Clinica Gabriela Chacón A\ClinicaChaconA\ClinicaChaconA\obj\Debug\ClinicaChaconA.pdb

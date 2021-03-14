@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CITAS_MEDICAS_UNIMAGDALENA.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            font-family: "Times New Roman", Times, serif;
+            text-align: center;
+            height: 109px;
+            width: 944px;
+        }
+        .style2
+        {
+            width: 80px;
+            height: 70px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1 class="style1">
+                    <em>*
+                    SISTEMA DE ADMINISTRACIÓN DE CITAS DE PACIENTES EN EL CENTRO MéDICO DE LA DOCTORA GABRIELA CHACON A. 
+                    *</em></h1>               
+            </div>
+            <div class="loginDisplay">
+                <img alt="" class="style2" src="imagenes/escudo_fisioterapia.bmp" /><img alt="" 
+                    class="style2" src="imagenes/logo_umca_azul.bmp" /><br />
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+                    EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+                    BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" 
+                    Font-Size="0.8em" ForeColor="#284E98" StaticSubMenuIndent="10px">
+                    <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#B5C7DE" />
+                    <DynamicSelectedStyle BackColor="#507CD1" />
+                    <DynamicItemTemplate>
+                        <%# Eval("Text") %>
+                    </DynamicItemTemplate>
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" 
+                            Text="Mantenimiento" Value="Mantenimiento">
+                            <asp:MenuItem Text="Ingreso de Pacientes" 
+                                Value="Pacientes"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Mantenimiento/Medicos.aspx" Text="Ingreso de Médicos" 
+                                Value="Médicos"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Mantenimiento/IngresoEspecilidad.aspx" 
+                                Text="Ingreso de Especialidades" Value="Especialidades Médicas"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Mantenimiento/Medicamentos.aspx" 
+                                Text="Ingreso de Medicamentos" Value="Medicamentos"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Movimientos" 
+                            Value="Movimientos">
+                            <asp:MenuItem NavigateUrl="~/Movimientos/Citas.aspx" Text="Ingreso de Citas" Value="Citas">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Reportes" 
+                            Value="Reportes">
+                            <asp:MenuItem NavigateUrl="~/Reportes/ListadoPacientes.aspx" 
+                                Text="Listado de Pacientes" Value="Listado Pacientes"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Reportes/ListadoMedicos.aspx" 
+                                Text="Listado de Médicos" Value="Listado Médicos"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Reportes/ListadoMedicamentos.aspx" 
+                                Text="Lista de Medicamentos" Value="Lista Medicamentos"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Reportes/ListdoConsultas.aspx" 
+                                Text="Listado de Citas" Value="Listado Citas"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" 
+                            Text="Administracion" Value="Administracion" Selected="True">
+                            <asp:MenuItem NavigateUrl="~/Administracion/AsignacionPermisos.aspx" 
+                                Text="Asiganación de Permisos" Value="Asiganación de Permisos">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Registrarse"/>
+                        <asp:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Cambio de Contraseña"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
+                    </Items>
+                    <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#507CD1" />
+                    <StaticItemTemplate>
+                        <%# Eval("Text") %>
+                    </StaticItemTemplate>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
